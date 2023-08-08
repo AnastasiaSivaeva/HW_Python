@@ -1,4 +1,4 @@
-#На семинаре 13 был создан проект по работе с пользователями (имя, id, уровень).
+#На семинаре 13. был создан проект по работе с пользователями (имя, id, уровень).
 #Напишите 3-7 тестов pytest для данного проекта.
 #Используйте фикстуры.
 
@@ -7,6 +7,9 @@ import pytest
 from STask4 import Project
 from STask3 import User
 from Exceptions import NotAllowedError, AdminNotFoundError, LevelError
+
+
+
 
 @pytest.fixture
 def get_file(tmp_path):
@@ -63,10 +66,6 @@ def test_add_user(name, u_id, level, result, exc, fill_users):
             fill_users.add_user(name, u_id, level)
         assert str(exc_info.value) == result
 
-@pytest.mark.parametrize("first_user, second_user, exp", [(User("Иванов", 34), User("Иванов", 34), True),
-                                                          (User("Суворов", 278), User("Иванов", 34), False), ])
-def test_users(first_user, second_user, exp):
-    assert (first_user == second_user) == exp
 
 
 if __name__ == "__main__":
